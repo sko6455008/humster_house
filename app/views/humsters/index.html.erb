@@ -1,0 +1,55 @@
+<section class="hero is-white">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        投稿一覧
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @humsters.each do |humster| %>
+        <div class="column is-4">
+          <div class="card">
+          <div class="card-content">
+            <div class="card-image">
+              
+                <%= link_to humster_path(humster) do %>
+
+                <figure class="image is-4by3">
+                <% if humster.image.attached? %>
+                <%= image_tag humster.image %>
+                
+                </figure>
+
+                <%else%>
+                <figure class="default-image">
+                <%= image_tag 'default.png'%>
+                </figure>
+                <% end %>
+                <% end %>
+              
+            </div>
+          </div>
+
+          <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <div class="post-title"><%=link_to humster.user.username, user_path(humster.user) %></div>
+                </div>
+              </div>
+
+              <div class="content">
+                <time><%= humster.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @humsters %>
+    </div>
+  </div>
+</section>

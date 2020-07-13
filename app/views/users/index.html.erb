@@ -1,0 +1,55 @@
+<section class="hero is-white">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        ユーザーの一覧
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @users.each do |user| %>
+        <div class="column is-3">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-image">
+                
+                <%= link_to user_path(user) do %>
+                <figure class="image">
+                <% if user.profile_image.attached? %>
+                <%= image_tag user.profile_image
+                 %>
+                </figure>
+
+                <%else%>
+                <figure class="default-image">
+                <%= image_tag 'default.png'
+                 %>
+                </figure>
+                <% end %>
+                <% end %>
+                
+
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <div class="post-title"><%=link_to user.username, user_path(user) %></div>
+                </div>
+              </div>
+              <div class="content">
+               投稿数:<%= user.humsters.count %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <%= paginate @users %>
+    </div>
+  </div>
+</section>
