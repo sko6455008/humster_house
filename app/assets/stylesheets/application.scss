@@ -16,7 +16,6 @@
 
  @import "bulma";
 
-
 // header
 #nav-input{
   display:none;
@@ -66,6 +65,32 @@ span{
   color:black;
 }
 
+// 募集一覧
+
+.content h3{
+  margin-top:10px;
+  margin-bottom:-3px;
+}
+
+//マイページ
+.buttons{
+  justify-content: center;
+  margin-top:20px;
+}
+
+.buttons .button{
+  margin-bottom:1.5rem;
+}
+
+// 募集詳細
+.panel-block:not(:last-child){
+  word-break:break-all;
+}
+
+.content table {
+  word-break:break-all;
+}
+
 
 
 // footer
@@ -90,6 +115,7 @@ footer {
 
 #nav-drawer {
   position: relative;
+  margin-bottom:10px;
 }
 
 
@@ -172,8 +198,6 @@ a{
 }
 
 }
-
-
 
 
 

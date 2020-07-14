@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        マイページ
+        マイページ<hr>
       </h1>
     </div>
   </div>
@@ -13,59 +13,70 @@
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="columns is-centered">
-          <div class="column is-4">
+          <div class="column is-6">
+
 
             <% if @user.profile_image.attached? %>
-            <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
+            <figure class="image is-200x200"  style="margin-left: auto; margin-right: auto;">
             <%= image_tag @user.profile_image %>
             </figure>
 
             <else>
             <% else %>
-            <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
+            <figure class="image is-200x200"  style="margin-left: auto; margin-right: auto;">
             <%= image_tag 'default.png'%>
             </figure>
             <% end %>
 
 
-            
-            
-
-
           </div>
-          <div class="column is-8">
-            <table class="table is-fullwidth">
-              <tr>
-                <td class="is-size-4">
-                  <strong><%= @user.username %></strong>
-                </td>
+
+          <div class="column is-6">
+
+            <div class="content">
+
+                <table class="table full-width">
+
+                <tr>
+                <td><h4>ユーザー名</h4>
+                  <%= @user.username %></td>
+                </tr>
+                
                 <% if @user.id == current_user.id %>
-                <td class="is-size-4">
-                  <%= @user.email %>
-                </td>
-                <td>
-                    <%= link_to "ユーザーの編集", edit_user_path(@user), class: "button is-primary" %>
-                </td>
+                <tr>
+                  <td class="profile-name">
+                    <h4>メールアドレス</h4>
+                      <%= @user.email %></td>
+                </tr>
+                
+                <tr>  
+                  
+                  <td class="profile-name"><h4>ユーザー情報</h4>
+                    <%= simple_format @user.profile %></td>
+                <tr>
 
-                <td>
-                    <%= link_to "ユーザーの削除", user_path(@user), class: "button is-danger",method: :delete,data: {confirm:'投稿も消えてしまいますが、削除してもよろしいですか？'} %>
-                </td>
+                </table>
+              
 
-
-                <% end %>
-              </tr>
-            </table>
-            <table class="table is-fullwidth">
-              <tr>
-                <td>
-                  <%= @user.profile %>
-                </td>
-              </tr>
-            </table>
+            </div> 
+                
           </div>
+
+
+
         </div>
       </div>
     </div>
+
+    <div class="buttons">
+        <span class="user-edit"><%= link_to "ユーザーの編集", edit_user_path(@user), class: "button is-primary" %></span>
+        <span class="user-delete"> <%= link_to "ユーザーの削除", user_path(@user), class: "button is-danger",method: :delete,data: {confirm:'投稿も消えてしまいますが、削除してもよろしいですか？'} %></span>
+
+    <% end %> 
+
+    </div>
+
+
   </div>
 </section>
 
@@ -97,7 +108,7 @@
                     <span class="panel-icon">
                       <i class="fas fa-book" aria-hidden="true"></i>
                     </span>
-                    この投稿を見る
+                    この募集を見る
                   <% end %>
 
                   <% if @user.id == current_user.id %>
@@ -106,14 +117,14 @@
                       <span class="panel-icon">
                         <i class="fas fa-edit"></i>
                       </span>
-                      この投稿を編集する
+                      この募集を編集する
                     <% end %>
 
                     <%= link_to humster_path(humster), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>
                       <span class="panel-icon">
                         <i class="fas fa-trash"></i>
                       </span>
-                      この投稿を削除する
+                      この募集を削除する
                     <% end %>
                   <% end %>
                 </div>
