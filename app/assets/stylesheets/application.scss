@@ -91,6 +91,19 @@ span{
   word-break:break-all;
 }
 
+.comment-title{
+  margin-bottom:20px;
+  margin-top:20px;
+}
+
+hr{
+  margin: 0.5rem 0;
+}
+
+textarea#comment_content{
+  width:100%;
+}
+
 
 
 // footer
@@ -104,10 +117,53 @@ footer {
   margin-top: auto;
 }
 
+// home
+
+#form-main{
+  height: 800px;
+  background-image: image-url("humster01.jpg");
+  background-size: cover;
+  object-fit: cover;
+}
+
+#form-div{
+  background-color:rgba(72,72,72,0.5);
+  height:600px;
+  width:65%;
+  margin: 0 auto;
+  margin-top:100px;
+}
+
+.text{
+  font-size:40px;
+  text-align:center;
+  font-family:cursive;
+  margin-top:40px;
+}
+.column.is-6{
+  margin: 0 auto;
+}
+
+.button.is-fullwidth{
+
+  height: 65px;
+
+}
+
+.flame{
+  margin:auto;
+}
+
+.login_new{
+  margin:100px 0;
+
+}
+
+
 
 
 // ハンバーガーメニュー
-@media screen and (max-width:768px) {
+@media screen and (max-width:1024px) {
 
 .media-content {
     overflow-x: visible;

@@ -7,5 +7,7 @@ class Humster < ApplicationRecord
     validates :body
   end
 
+    has_many :comments
+
 
 end

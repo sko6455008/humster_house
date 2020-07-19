@@ -41,8 +41,7 @@
                 <td><h4>ユーザー名</h4>
                   <%= @user.username %></td>
                 </tr>
-                
-                <% if @user.id == current_user.id %>
+              
                 <tr>
                   <td class="profile-name">
                     <h4>メールアドレス</h4>
@@ -67,6 +66,8 @@
         </div>
       </div>
     </div>
+
+    <% if @user.id == current_user.id %>
 
     <div class="buttons">
         <span class="user-edit"><%= link_to "ユーザーの編集", edit_user_path(@user), class: "button is-primary" %></span>

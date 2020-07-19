@@ -1,7 +1,7 @@
 class HumstersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
-  PER=12
+  PER=6
 
   def index
   	@humsters=Humster.page(params[:page]).per(PER)
@@ -9,6 +9,9 @@ class HumstersController < ApplicationController
 
   def show
   	@humster=Humster.find(params[:id])
+
+    @comments = @humster.comments.includes(:user).page(params[:page]).per(PER)
+    @comment=@humster.comments.build(user_id: current_user.id) if current_user
   end
 
   def new
@@ -42,7 +45,7 @@ class HumstersController < ApplicationController
   end
 
   def destroy
-    humster=Humster.find(parms[:id])
+    humster=Humster.find(params[:id])
     humster.destroy
     redirect_to humsters_path
     

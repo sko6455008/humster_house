@@ -69,7 +69,45 @@
         </article>
 
         <div>
-          チャット機能
+        
+        <h2 class="comment-title"> この募集にコメントをする</h2>
+
+        <%= form_with model: [@humster, @comment],local: true do |f| %>
+
+        <div class="field">
+        <%= f.text_area :content %>
+        
+        </div>
+
+        <%= f.submit 'コメントする',class: "button is-success" %>
+
+        <% end %>
+
+
+        <div class="content">
+          <h2 class="comment-title">コメント一覧</h2>
+          <table class="table is-narrow">
+
+        <% if @comments.any? %>
+
+        <% @comments.each do |comment| %>
+         <tr>
+          <td>
+            ユーザ名：<%= comment.user.username %>
+            <br>
+            コメント内容：<%= comment.content %>
+          </td>
+         </tr>
+        <% end %>
+        <% end %>
+
+          </table>
+        </div>
+
+        <%= paginate @comments%>
+
+
+
         </div>
 
       </div>
