@@ -53,7 +53,7 @@ class HumstersController < ApplicationController
 
   private
   def humster_params
-  	params.require(:humster).permit(:title,:body,:image)
+  	params.require(:humster).permit(:title,:body,:image,category_ids: [])
   end
 
 

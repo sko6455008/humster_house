@@ -26,13 +26,25 @@
       <div class="column is-6">
         <%= form_for @humster do |f| %>
           <div class="field">
-            <%= f.label :title, "ハムスターの種類", class: "label"%>
-            <%= f.text_field :title, class: "input" ,:placeholder => "ジャンガリアン,ロボロフスキーなど..."%>
+            <%= f.label :title, "募集タイトル", class: "label"%>
+            <%= f.text_field :title, class: "input" ,:placeholder => "例:一身上の都合で飼えなくなりました"%>
           </div>
 
           <div class="field">
             <%= f.label :body, "詳細", class: "label" %>
             <%= f.text_area :body, class: "textarea",:placeholder => "生まれた日,健康状態,性格,性別,引き渡し方法,ワクチン有無など..." %>
+          </div>
+
+          <div class="field">
+
+            <%= f.label :category,"カテゴリー",class: "label"%>
+            <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %> 
+            <%= category.label do %>
+            <%= category.check_box %>
+            <%= category.text %>
+            <% end %>
+            <% end %>
+            
           </div>
 
           <div class="field">

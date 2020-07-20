@@ -35,12 +35,23 @@
                   <td><h3>ハムスターの種類</h3><br>
                   <%= @humster.title %></td>
                 </tr>
+
+                <tr>
+                  <td align="left"><h3>カテゴリー</h3><br>
+                  <% @humster.categories.each do |category| %>
+  　　　　　　　　　<%= category.name %>
+                  <% end %>
+　　　　　　　　　　</td>
+                </tr>
                 
                 <tr>
                   <td><h3>募集詳細</h3><br>
                     <%= simple_format @humster.body %></td>
                 </tr>
+
+                
               </table>
+
               <% if @humster.user.id == current_user.id %>
                 <%= link_to "編集画面へ", edit_humster_path(@humster), class: "button is-success" %>
               <% end %>

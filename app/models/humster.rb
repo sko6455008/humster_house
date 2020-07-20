@@ -7,7 +7,10 @@ class Humster < ApplicationRecord
     validates :body
   end
 
-    has_many :comments
+    has_many :comments, dependent: :destroy
+
+    has_many :category_relations, dependent: :destroy
+    has_many :categories,through: :category_relations, dependent: :destroy
 
 
 end
