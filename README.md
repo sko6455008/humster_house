@@ -6,6 +6,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+Ruby 1.8.2
 
 * System dependencies
 
